@@ -30,6 +30,13 @@ def completeTodo(id):
 
     return redirect(url_for('index'))
 
+@app.route('/delete/<string:id>')
+def deleteTodo(id):
+    Todo.query.filter_by(id=id).delete()
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
 
 
 class Todo(db.Model):
