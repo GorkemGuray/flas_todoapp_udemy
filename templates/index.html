@@ -39,11 +39,12 @@
                         <th scope="row">{{todo.id}}</th>
                         <td>{{todo.title}}</td>
                         {% if todo.complete==False %}
-                        <td><b>Tamamlanmadı</b></td>
+                            <td><b>Tamamlanmadı</b></td>
                         {% else %}
-                        <td><i>Tamamlandı</i></td>
+                            <td><i>Tamamlandı</i></td>
                         {% endif %}
-                        <td><a href="/complete/{{todo.id}}" class="btn btn-outline-primary">Tamamla</a></td>
+
+                        <td><a href="/complete/{{todo.id}}" class="btn btn-outline-primary">{% if todo.complete %}Tamamlanmadı{% else %}Tamamlandı{% endif %}</a></td>
                         <td><a href="/delete/{{todo.id}}" class="btn btn-outline-danger">Sil</a></td>
                     </tr>
                 {% endfor %}
