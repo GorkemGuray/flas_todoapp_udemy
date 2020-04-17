@@ -20,6 +20,38 @@
         </form>
     </div>
     <hr>
+
+    <div class="container" style="margin-top:50px;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Todo Başlık</th>
+                    <th scope="col">Todo Durum</th>
+                    <th scope="col">Durum Güncelle</th>
+                    <th scope="col">Todo Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for todo in  todos  %}
+                    <tr {% if todo.complete %}class="table-sucess"{% else %}class="table-warning"{% endif %} >
+                        <th scope="row">{{todo.id}}</th>
+                        <td>{{todo.title}}</td>
+                        {% if todo.complete==False %}
+                        <td><b>Tamamlanmadı</b></td>
+                        {% else %}
+                        <td><i>Tamamlandı</i></td>
+                        {% endif %}
+                        <td><a href="/complete/{{todo.id}}" class="btn btn-outline-primary">Tamamla</a></td>
+                        <td><a href="/delete/{{todo.id}}" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                {% endfor %}
+                
+   
+            </tbody>
+        </table>
+    </div>
     
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

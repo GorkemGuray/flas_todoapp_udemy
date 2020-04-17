@@ -10,7 +10,8 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    todos=Todo.query.all()
+    return render_template('index.html',todos=todos)
 
 @app.route('/add', methods=['POST'])
 def addTodo():
